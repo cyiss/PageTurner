@@ -42,6 +42,7 @@ import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.*;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.animation.Animation;
@@ -91,6 +92,10 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.*;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+
 import static net.nightwhistler.pageturner.PlatformUtil.isIntentAvailable;
 
 public class ReadingFragment extends RoboSherlockFragment implements
@@ -115,6 +120,8 @@ public class ReadingFragment extends RoboSherlockFragment implements
 	public static final String EXTRA_MARGIN_RIGHT = "EXTRA_MARGIN_RIGHT";
 
     private static final int BOOK_OPEN_STAGES = 5;
+
+    private static final int DIALOG_ALERT = 10;
 
 	private static final Logger LOG = LoggerFactory
 			.getLogger("ReadingFragment");
@@ -427,7 +434,7 @@ public class ReadingFragment extends RoboSherlockFragment implements
 				if ( ttsIsRunning() ) {
 					return false;
 				}
-				
+
 				return gestureDetector.onTouchEvent(event);
 			}
 		};
@@ -436,7 +443,7 @@ public class ReadingFragment extends RoboSherlockFragment implements
 		this.bookView.setOnTouchListener(gestureListener);
         this.dummyView.setOnTouchListener(gestureListener);
 		
-		registerForContextMenu(bookView);
+		// registerForContextMenu(bookView);
 		saveConfigState();
 
         Intent intent = activity.getIntent();
@@ -1245,12 +1252,12 @@ public class ReadingFragment extends RoboSherlockFragment implements
 			android.view.MenuItem newItem2 = menu
 					.add(getString(R.string.google_lookup));
 			newItem2.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-				@Override
-				public boolean onMenuItemClick(android.view.MenuItem item) {
-					lookupGoogle(word.toString());
-					return true;
-				}
-			});
+                @Override
+                public boolean onMenuItemClick(android.view.MenuItem item) {
+                    lookupGoogle(word.toString());
+                    return true;
+                }
+            });
 
 			this.selectedWord = null;
 		}
@@ -1346,14 +1353,29 @@ public class ReadingFragment extends RoboSherlockFragment implements
 
     @Override
 	public boolean isDictionaryAvailable() {
-		return isIntentAvailable(context, getDictionaryIntent());
+		// return isIntentAvailable(context, getDictionaryIntent());
+        return true;
 	}
 
 	@Override
 	public void lookupDictionary(String text) {
+        /*
 		Intent intent = getDictionaryIntent();
 		intent.putExtra(EXTRA_QUERY, text); // Search Query
 		startActivityForResult(intent, 5);
+		*/
+        AlertDialog ad = new AlertDialog.Builder(context)
+                .create();
+        ad.setCancelable(false);
+        ad.setTitle("llo");
+        ad.setMessage("hello world");
+        ad.setButton("-KO-", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        ad.show();
 	}
 
     private String getLanguageCode() {
@@ -2259,7 +2281,7 @@ public class ReadingFragment extends RoboSherlockFragment implements
 			config.setColourProfile(ColourProfile.DAY);
 			this.restartActivity();
 			return true;
-
+        /*
 		case R.id.manual_sync:
 			if (config.isSyncEnabled()) {
 				new ManualProgressSync().execute();
@@ -2268,7 +2290,7 @@ public class ReadingFragment extends RoboSherlockFragment implements
 						.show();
 			}
 			return true;
-
+        */
 		case R.id.search_text:
 			onSearchRequested();
 			return true;

@@ -19,8 +19,10 @@
 
 package net.nightwhistler.pageturner.view.bookview;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -54,6 +56,19 @@ public class TextSelectionActions implements ActionMode.Callback {
 
     @Override
     public boolean onCreateActionMode(final ActionMode mode, Menu menu) {
+
+        AlertDialog ad = new AlertDialog.Builder(context)
+                .create();
+        ad.setCancelable(false);
+        ad.setTitle("llo");
+        ad.setMessage("hello world");
+        ad.setButton("-KO-", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        ad.show();
 
         menu.removeItem(android.R.id.selectAll);
 

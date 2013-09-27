@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
 	android:key="PageTurnerState">
-	
+
+	<!-- Shanbay Settings -->
+	<PreferenceCategory
+			android:title="@string/pref_shanbay_settings">
+
+	<EditTextPreference
+				android:key="shanbay_id"
+				android:title="@string/pref_shanbay_id"
+				android:summary="@string/pref_shanbay_id_summary"
+				android:dialogTitle="@string/pref_shanbay_id"
+				android:dialogMessage="@string/pref_shanbay_id_message"
+				android:inputType="textNoSuggestions"
+				/>
+	<EditTextPreference
+				android:key="shanbay_password"
+				android:title="@string/pref_shanbay_password"
+				android:summary="@string/pref_shanbay_password_summary"
+				android:dialogTitle="@string/pref_shanbay_password"
+				android:dialogMessage="@string/pref_shanbay_password_message"
+				android:inputType="textPassword"
+				/>
+
+	</PreferenceCategory>
+	<!--
 	<PreferenceCategory
                 android:title="@string/pref_sync_settings"> 
                  
@@ -46,7 +69,7 @@
 	            />
 	
 	</PreferenceCategory>
-
+	-->
 	<PreferenceCategory
             android:key="nook_prefs"
             android:title="@string/pref_nook_touch">

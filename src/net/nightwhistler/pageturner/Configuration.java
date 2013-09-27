@@ -104,6 +104,9 @@ public class Configuration {
 	public static final String KEY_NAV_SWIPE_V = "nav_swipe_v";
 	public static final String KEY_NAV_VOL = "nav_vol";
 
+    public static final String KEY_SHANBAY_ID = "shanbay_id";
+    public static final String KEY_SHANBAY_PASSWORD = "shanbay_password";
+
 	public static final String KEY_EMAIL = "email";
 	public static final String KEY_FULL_SCREEN = "full_screen";
 	public static final String KEY_COPY_TO_LIB = "copy_to_library";
@@ -487,6 +490,14 @@ public class Configuration {
 				&& "forward".equals(settings.getString(
 						KEY_NOOK_TOP_BUTTONS_DIRECTION, "backward"));
 	}
+
+    public String getShanbayId() {
+        return settings.getString(KEY_SHANBAY_ID, "").trim();
+    }
+
+    public String getShanbayPassword() {
+        return settings.getString(KEY_SHANBAY_PASSWORD, "").trim();
+    }
 
 	public String getSynchronizationEmail() {
 		return settings.getString(KEY_EMAIL, "").trim();

@@ -186,6 +186,14 @@
     <string name="import_this">Import this folder</string>
 
     <!-- Preferences -->
+	<string name="pref_shanbay_settings">Shanbay Setting</string>
+	<string name="pref_shanbay_id">Shanbay ID</string>
+	<string name="pref_shanbay_id_summary">ID for your Shanbay Account</string>
+	<string name="pref_shanbay_id_message">Please enter your shanbay ID</string>
+
+	<string name="pref_shanbay_password">Shanbay Password</string>
+	<string name="pref_shanbay_password_summary">Password for your Shanbay Account</string>
+	<string name="pref_shanbay_password_message">Please enter your shanbay password</string>
 
     <string name="pref_sync_settings">Sync settings</string>
     <string name="pref_email">E-mail address</string>
@@ -366,6 +374,6 @@
     <string name="default_book_title" translatable="false">Title of the book</string>
     <string name="hello_world" translatable="false">Hello world!</string>
 
-    
+    <string name="pref_shanbay_username"></string>
 
 </resources>
