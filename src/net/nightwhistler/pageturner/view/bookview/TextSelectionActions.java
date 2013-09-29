@@ -24,15 +24,20 @@ import android.content.Context;
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.os.Build;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.chengyue.koala.shanbay.Shanbay;
+import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.PlatformUtil;
 import net.nightwhistler.pageturner.R;
+import roboguice.RoboGuice;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TextSelectionActions implements ActionMode.Callback {
+    private static final String TAG = "TextSelectionActions";
 
     private TextSelectionCallback callBack;
     private BookView bookView;
@@ -56,7 +61,7 @@ public class TextSelectionActions implements ActionMode.Callback {
 
     @Override
     public boolean onCreateActionMode(final ActionMode mode, Menu menu) {
-
+        /*
         AlertDialog ad = new AlertDialog.Builder(context)
                 .create();
         ad.setCancelable(false);
@@ -69,6 +74,13 @@ public class TextSelectionActions implements ActionMode.Callback {
             }
         });
         ad.show();
+        */
+        Configuration config = RoboGuice.getInjector(context).getInstance(Configuration.class);
+        String shanbayId = config.getShanbayId();
+        String shanbayPassword = config.getShanbayPassword();
+        Shanbay sb = Shanbay.getInstance();
+        sb.setContext(context);
+        sb.login(shanbayId, shanbayPassword);
 
         menu.removeItem(android.R.id.selectAll);
 

@@ -8,20 +8,21 @@ package com.chengyue.koala.shanbay;
  * To change this template use File | Settings | File Templates.
  */
 
+import android.content.Context;
+import android.util.Log;
 import com.google.inject.Inject;
-import com.loopj.android.http.*;
 import net.nightwhistler.pageturner.Configuration;
+import roboguice.RoboGuice;
 
 public class Shanbay {
+    private static final String TAG = "Shanbay";
     private static Shanbay mInstance = new Shanbay();
-
-    @Inject
-    private Configuration config;
+    private static SBRestClient mClient;
+    private String mUsername;
+    private String mPassword;
+    private Context mContext;
 
     private Shanbay() {
-        String shanbayId = config.getShanbayId();
-        String shanbayPassword = config.getShanbayPassword();
-
 
     }
 
@@ -29,4 +30,24 @@ public class Shanbay {
         return mInstance;
     }
 
+    public void setContext(Context context) {
+        mContext = context;
+    }
+
+    public void login(String username, String password) {
+        String shanbayId = username;
+        String shanbayPassword = password;
+        Log.d(TAG, shanbayId);
+        Log.d(TAG, shanbayPassword);
+
+        if (shanbayId != null && shanbayPassword != null && !"".equals(shanbayId) && !"".equals(shanbayPassword) ) {
+            mClient = SBRestClient.getInstance();
+            mClient.setContext(mContext);
+            mClient.tryLogin(shanbayId, shanbayPassword);
+        }
+    }
+
+    public boolean isLoggedIn() {
+        return mClient.isLoggedIn;
+    }
 }
