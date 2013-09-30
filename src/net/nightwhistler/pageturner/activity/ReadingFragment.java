@@ -53,6 +53,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.chengyue.koala.shanbay.Shanbay;
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
 import net.nightwhistler.htmlspanner.spans.CenterSpan;
@@ -1356,6 +1357,26 @@ public class ReadingFragment extends RoboSherlockFragment implements
 		// return isIntentAvailable(context, getDictionaryIntent());
         return true;
 	}
+
+    @Override
+    public void addToShanbay(String text) {
+        Shanbay sb = Shanbay.getInstance();
+        if( sb.isLoggedIn() ) {
+            sb.addWord( text );
+        } else {
+            AlertDialog ad = new AlertDialog.Builder(context)
+                    .create();
+            ad.setCancelable(false);
+            ad.setTitle("Shanbay Login Required");
+            ad.setMessage("Please Login into Shanbay first");
+            ad.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            ad.show();
+        }
+    }
 
 	@Override
 	public void lookupDictionary(String text) {

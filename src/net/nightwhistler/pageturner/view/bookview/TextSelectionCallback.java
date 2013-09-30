@@ -22,6 +22,7 @@ package net.nightwhistler.pageturner.view.bookview;
 import android.graphics.Color;
 
 public interface TextSelectionCallback {
+    void addToShanbay( String text );
 
 	void lookupWikipedia( String text );
 

@@ -79,8 +79,10 @@ public class TextSelectionActions implements ActionMode.Callback {
         String shanbayId = config.getShanbayId();
         String shanbayPassword = config.getShanbayPassword();
         Shanbay sb = Shanbay.getInstance();
-        sb.setContext(context);
-        sb.login(shanbayId, shanbayPassword);
+        if(!sb.isLoggedIn()) {
+            sb.setContext(context);
+            sb.login(shanbayId, shanbayPassword);
+        }
 
         menu.removeItem(android.R.id.selectAll);
 
@@ -128,6 +130,16 @@ public class TextSelectionActions implements ActionMode.Callback {
                         }
                     });
         }
+
+        menu.add(R.string.add_to_shanbay)
+                .setOnMenuItemClickListener(new OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(android.view.MenuItem item) {
+                        callBack.addToShanbay(bookView.getSelectedText());
+                        mode.finish();
+                        return true;
+            }
+        });
 
         menu.add(R.string.lookup_wiktionary)
                 .setOnMenuItemClickListener(new OnMenuItemClickListener() {

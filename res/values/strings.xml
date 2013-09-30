@@ -18,6 +18,7 @@
     <string name="about">About PageTurner</string>
     <string name="about_gpl">PageTurner is free software under the GPL v3.</string>
     <string name="error_open_bk">Error opening book: %s</string>
+	<string name="add_to_shanbay">Add To Shanbay</string>
     <string name="dictionary_lookup">Look up in Dictionary</string>
     <string name="wikipedia_lookup">Search on Wikipedia</string>
     <string name="google_lookup">Search on Google</string>
