@@ -69,7 +69,7 @@ public class Shanbay {
 
                 @Override
                 public void onSuccess(String content) {
-                    String patternString = "(\\d+?)";
+                    String patternString = "(\\d+)";
                     Pattern pattern = Pattern.compile(patternString);
                     Matcher matcher = pattern.matcher(content);
 

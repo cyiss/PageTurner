@@ -85,6 +85,7 @@ import nl.siegmann.epublib.domain.Author;
 import nl.siegmann.epublib.domain.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import roboguice.RoboGuice;
 import roboguice.inject.InjectView;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
@@ -2302,6 +2303,17 @@ public class ReadingFragment extends RoboSherlockFragment implements
 			config.setColourProfile(ColourProfile.DAY);
 			this.restartActivity();
 			return true;
+
+        case R.id.profile_shanbay:
+            Shanbay sb = Shanbay.getInstance();
+            if(!sb.isLoggedIn()) {
+                Configuration config = RoboGuice.getInjector(context).getInstance(Configuration.class);
+                String shanbayId = config.getShanbayId();
+                String shanbayPassword = config.getShanbayPassword();
+                sb.setContext(context);
+                sb.login(shanbayId, shanbayPassword);
+            }
+            return true;
         /*
 		case R.id.manual_sync:
 			if (config.isSyncEnabled()) {

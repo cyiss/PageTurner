@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <item android:id="@+id/profile_shanbay"
+          android:title="@string/profile_shanbay"
+          android:icon="@drawable/shanbay_login"
+          android:showAsAction="ifRoom" />
      <!--
      <item android:id="@+id/manual_sync"          
           android:title="@string/manual_sync"

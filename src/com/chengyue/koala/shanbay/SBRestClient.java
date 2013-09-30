@@ -14,6 +14,7 @@ import android.util.Log;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.app.AlertDialog;
+import android.widget.Toast;
 import com.google.inject.Inject;
 import com.loopj.android.http.*;
 import net.nightwhistler.pageturner.Configuration;
@@ -120,8 +121,25 @@ public class SBRestClient {
 
             @Override
             public void onSuccess(String content) {
-                Log.d(TAG, "request onSuccess");
-                isLoggedIn = true;
+                String patternString = "<title>扇贝移动</title>";
+                Pattern pattern = Pattern.compile(patternString);
+                Matcher matcher = pattern.matcher(content);
+                if (matcher.find()) {
+                    isLoggedIn = true;
+                    Toast.makeText(mContext, "Shanbay Logged In", Toast.LENGTH_LONG).show();
+                } else {
+                    AlertDialog ad = new AlertDialog.Builder(mContext)
+                            .create();
+                    ad.setCancelable(false);
+                    ad.setTitle("Shanbay Login Failed");
+                    ad.setMessage("Please Check Your Shanbay Username and Password.");
+                    ad.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    ad.show();
+                }
                 Log.d(TAG, content);
             }
 

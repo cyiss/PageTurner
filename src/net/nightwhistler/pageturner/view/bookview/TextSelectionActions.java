@@ -61,29 +61,6 @@ public class TextSelectionActions implements ActionMode.Callback {
 
     @Override
     public boolean onCreateActionMode(final ActionMode mode, Menu menu) {
-        /*
-        AlertDialog ad = new AlertDialog.Builder(context)
-                .create();
-        ad.setCancelable(false);
-        ad.setTitle("llo");
-        ad.setMessage("hello world");
-        ad.setButton("-KO-", new DialogInterface.OnClickListener() {
-
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        ad.show();
-        */
-        Configuration config = RoboGuice.getInjector(context).getInstance(Configuration.class);
-        String shanbayId = config.getShanbayId();
-        String shanbayPassword = config.getShanbayPassword();
-        Shanbay sb = Shanbay.getInstance();
-        if(!sb.isLoggedIn()) {
-            sb.setContext(context);
-            sb.login(shanbayId, shanbayPassword);
-        }
-
         menu.removeItem(android.R.id.selectAll);
 
         MenuItem copyItem = menu.findItem(android.R.id.copy);
@@ -130,17 +107,18 @@ public class TextSelectionActions implements ActionMode.Callback {
                         }
                     });
         }
-
-        menu.add(R.string.add_to_shanbay)
-                .setOnMenuItemClickListener(new OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                        callBack.addToShanbay(bookView.getSelectedText());
-                        mode.finish();
-                        return true;
-            }
-        });
-
+        Shanbay sb = Shanbay.getInstance();
+        if(sb.isLoggedIn()) {
+            menu.add(R.string.add_to_shanbay)
+                    .setOnMenuItemClickListener(new OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(android.view.MenuItem item) {
+                            callBack.addToShanbay(bookView.getSelectedText());
+                            mode.finish();
+                            return true;
+                        }
+                    });
+        }
         menu.add(R.string.lookup_wiktionary)
                 .setOnMenuItemClickListener(new OnMenuItemClickListener() {
                     @Override
@@ -150,7 +128,7 @@ public class TextSelectionActions implements ActionMode.Callback {
                         return true;
                     }
                 });
-
+        /*
         menu.add(R.string.wikipedia_lookup)
                 .setOnMenuItemClickListener(new OnMenuItemClickListener() {
                     @Override
@@ -160,7 +138,7 @@ public class TextSelectionActions implements ActionMode.Callback {
                         return true;
                     }
                 });
-
+        */
         menu.add(R.string.google_lookup)
                 .setOnMenuItemClickListener(new OnMenuItemClickListener() {
                     @Override

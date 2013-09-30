@@ -11,6 +11,7 @@
     <string name="open_library">My Books</string>
     <string name="profile_day">Switch to day mode</string>
     <string name="profile_night">Switch to night mode</string>
+    <string name="profile_shanbay">Login to Shanbay</string>
     <string name="manual_sync">Sync reading progress</string>
     <string name="prefs">Settings</string>
     <string name="show_toc">Show TOC</string>
