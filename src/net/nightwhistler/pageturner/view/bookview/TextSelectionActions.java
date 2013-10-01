@@ -29,11 +29,13 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.text.Html;
 import com.chengyue.koala.shanbay.Shanbay;
 import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.PlatformUtil;
 import net.nightwhistler.pageturner.R;
 import roboguice.RoboGuice;
+import com.chengyue.dict.Dict;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TextSelectionActions implements ActionMode.Callback {
@@ -64,6 +66,24 @@ public class TextSelectionActions implements ActionMode.Callback {
         menu.removeItem(android.R.id.selectAll);
 
         MenuItem copyItem = menu.findItem(android.R.id.copy);
+
+        String word = bookView.getSelectedText();
+        if (Dict.getIsReady()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage(Html.fromHtml(Dict.find(word)));
+            Shanbay sb = Shanbay.getInstance();
+            if(sb.isLoggedIn()) {
+                builder.setPositiveButton("Add To Shanbay", new OkOnClickListener());
+                builder.setCancelable(true);
+            } else {
+                builder.setCancelable(false);
+            }
+            builder.setNegativeButton("Dismiss", new CancelOnClickListener());
+            AlertDialog dialog = builder.create();
+
+            dialog.show();
+        }
+
 
         if ( copyItem != null ) {
             copyItem.setOnMenuItemClickListener(new OnMenuItemClickListener() {
@@ -102,18 +122,6 @@ public class TextSelectionActions implements ActionMode.Callback {
                         @Override
                         public boolean onMenuItemClick(android.view.MenuItem item) {
                             callBack.lookupDictionary(bookView.getSelectedText());
-                            mode.finish();
-                            return true;
-                        }
-                    });
-        }
-        Shanbay sb = Shanbay.getInstance();
-        if(sb.isLoggedIn()) {
-            menu.add(R.string.add_to_shanbay)
-                    .setOnMenuItemClickListener(new OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(android.view.MenuItem item) {
-                            callBack.addToShanbay(bookView.getSelectedText());
                             mode.finish();
                             return true;
                         }
@@ -165,4 +173,17 @@ public class TextSelectionActions implements ActionMode.Callback {
         return true;
     }
 
+    private final class CancelOnClickListener implements
+            DialogInterface.OnClickListener {
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    }
+
+    private final class OkOnClickListener implements
+            DialogInterface.OnClickListener {
+        public void onClick(DialogInterface dialog, int which) {
+            callBack.addToShanbay(bookView.getSelectedText());
+        }
+    }
 }

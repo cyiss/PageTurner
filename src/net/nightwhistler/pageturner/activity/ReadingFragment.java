@@ -90,13 +90,10 @@ import roboguice.inject.InjectView;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.*;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
+import com.chengyue.dict.Dict;
 
 import static net.nightwhistler.pageturner.PlatformUtil.isIntentAvailable;
 
@@ -270,6 +267,28 @@ public class ReadingFragment extends RoboSherlockFragment implements
 		HandlerThread bgThread = new HandlerThread("background");
 		bgThread.start();
 		this.backgroundHandler = new Handler(bgThread.getLooper());
+
+        /* Load Dictionary */
+        final Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                Toast.makeText(context, "Dictionary Loaded", Toast.LENGTH_LONG).show();
+            }
+        };
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                try {
+                    if (!Dict.getIsReady()) {
+                        Dict.init( context.getAssets() );
+                    }
+                } catch (Exception e) {
+
+                }
+                handler.sendEmptyMessage(0);
+            }
+        }).start();
 	}
 	
 	@Override
@@ -1386,6 +1405,7 @@ public class ReadingFragment extends RoboSherlockFragment implements
 		intent.putExtra(EXTRA_QUERY, text); // Search Query
 		startActivityForResult(intent, 5);
 		*/
+        /*
         AlertDialog ad = new AlertDialog.Builder(context)
                 .create();
         ad.setCancelable(false);
@@ -1398,6 +1418,7 @@ public class ReadingFragment extends RoboSherlockFragment implements
             }
         });
         ad.show();
+        */
 	}
 
     private String getLanguageCode() {

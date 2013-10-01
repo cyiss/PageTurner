@@ -187,6 +187,18 @@
 			<artifactId>com-loopj-android-http</artifactId>
 			<version>1.4.3</version>
 		</dependency>
+
+        <dependency>
+            <groupId>com.imagero.uio</groupId>
+            <artifactId>com-imagero-uio</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.imagero.java.util</groupId>
+            <artifactId>com-imagero-java-util</artifactId>
+            <version>1.0</version>
+        </dependency>
 	</dependencies>
 
 	<build>
