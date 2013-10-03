@@ -18,7 +18,7 @@ import com.google.inject.Inject;
 import com.limecreativelabs.sherlocksupport.ActionBarDrawerToggleCompat;
 import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.PageTurner;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import roboguice.RoboGuice;
 import roboguice.inject.InjectView;
 

@@ -33,7 +33,7 @@ import android.text.Html;
 import com.chengyue.koala.shanbay.Shanbay;
 import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.PlatformUtil;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import roboguice.RoboGuice;
 import com.chengyue.dict.Dict;
 

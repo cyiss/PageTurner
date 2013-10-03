@@ -23,7 +23,7 @@ import android.content.Context;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.widget.Toast;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 
 public class LanguageSwitchPreference extends ListPreference {
 	

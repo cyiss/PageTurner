@@ -25,6 +25,7 @@ import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
 
 import static org.acra.ReportField.*;
+import com.chengyue.koalaReader.R;
 
 @ReportsCrashes(formKey = "", // will not be used
         formUri = "http://acra.pageturner-reader.org/crash",

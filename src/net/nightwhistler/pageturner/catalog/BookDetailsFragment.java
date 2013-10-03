@@ -45,7 +45,7 @@ import net.nightwhistler.nucular.atom.Entry;
 import net.nightwhistler.nucular.atom.Feed;
 import net.nightwhistler.nucular.atom.Link;
 import net.nightwhistler.pageturner.Configuration;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import net.nightwhistler.pageturner.activity.ReadingActivity;
 import roboguice.inject.InjectView;
 

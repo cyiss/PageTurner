@@ -26,7 +26,7 @@ import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmen
 import net.nightwhistler.nucular.atom.Feed;
 import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.PageTurner;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import net.nightwhistler.pageturner.catalog.BookDetailsFragment;
 import net.nightwhistler.pageturner.catalog.CatalogParent;
 import roboguice.RoboGuice;

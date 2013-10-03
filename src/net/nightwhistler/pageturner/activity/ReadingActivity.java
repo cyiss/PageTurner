@@ -31,7 +31,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import com.google.inject.Inject;
 import net.nightwhistler.pageturner.Configuration;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import net.nightwhistler.pageturner.view.NavigationCallback;
 import roboguice.inject.InjectFragment;
 

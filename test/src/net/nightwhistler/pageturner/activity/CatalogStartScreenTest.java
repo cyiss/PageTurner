@@ -1,6 +1,6 @@
 package net.nightwhistler.pageturner.activity;
 
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 
 import net.nightwhistler.pageturner.catalog.CatalogFragment;
 

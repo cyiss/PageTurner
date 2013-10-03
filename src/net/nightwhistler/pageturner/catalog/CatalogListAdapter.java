@@ -30,7 +30,7 @@ import com.google.inject.Inject;
 import net.nightwhistler.nucular.atom.Entry;
 import net.nightwhistler.nucular.atom.Feed;
 import net.nightwhistler.nucular.atom.Link;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 
 public class CatalogListAdapter extends BaseAdapter {
 	

@@ -62,7 +62,7 @@ import net.nightwhistler.pageturner.Configuration.AnimationStyle;
 import net.nightwhistler.pageturner.Configuration.ColourProfile;
 import net.nightwhistler.pageturner.Configuration.ReadingDirection;
 import net.nightwhistler.pageturner.Configuration.ScrollStyle;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import net.nightwhistler.pageturner.TextUtil;
 import net.nightwhistler.pageturner.animation.*;
 import net.nightwhistler.pageturner.dto.HighLight;

@@ -7,7 +7,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import net.nightwhistler.pageturner.PlatformUtil;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import net.nightwhistler.pageturner.view.NavigationCallback;
 
 import java.util.Arrays;

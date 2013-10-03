@@ -23,7 +23,7 @@ import com.actionbarsherlock.view.Window;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.PageTurner;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import roboguice.RoboGuice;
 import roboguice.inject.InjectFragment;
 

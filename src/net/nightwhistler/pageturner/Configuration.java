@@ -38,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import roboguice.inject.ContextSingleton;
+import com.chengyue.koalaReader.R;
 
 import java.util.*;
 

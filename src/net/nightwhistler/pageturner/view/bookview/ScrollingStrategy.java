@@ -33,7 +33,7 @@ import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.TextView;
 import com.google.inject.Inject;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import net.nightwhistler.pageturner.dto.HighLight;
 import net.nightwhistler.pageturner.epub.PageTurnerSpine;
 import net.nightwhistler.pageturner.view.HighlightManager;

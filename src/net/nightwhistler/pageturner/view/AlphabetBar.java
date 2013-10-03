@@ -32,7 +32,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.Configuration.ColourProfile;
-import net.nightwhistler.pageturner.R;
+import com.chengyue.koalaReader.R;
 import roboguice.RoboGuice;
 
 import java.util.ArrayList;

@@ -39,6 +39,8 @@ import roboguice.RoboGuice;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.chengyue.koalaReader.R;
+
 public class ManageSitesActivity extends RoboSherlockListActivity {
 
 	@Inject
